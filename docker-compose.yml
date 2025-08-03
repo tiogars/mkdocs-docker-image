@@ -3,7 +3,6 @@ services:
     image: ghcr.io/tiogars/mkdocs-docker-image:latest
     volumes:
       - ./docs:/server/docs
-      - ./pdf_event_hook:/server/pdf_event_hook
       - ./mkdocs.yml:/server/mkdocs.yml
     working_dir: /server/
     command: ["serve","--dev-addr=0.0.0.0:8000"]
