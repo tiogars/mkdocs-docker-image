@@ -1,7 +1,7 @@
 site_name: test-mkdocs.tiogars.fr
 site_url: https://test-mkdocs.tiogars.fr/
 repo_url: https://github.com/tiogars/mkdocs-docker-image
-site_description: tutorials on all my interested topics
+site_description: Documentation for mkdocs-docker-image (test)
 site_author: Tiogars
 nav:
   - Home: index.md
@@ -77,7 +77,7 @@ plugins:
       #headless_chrome_path: headless-chromium
       # headless_chrome_path: headless-chrome
       #
-      output_path: fr.tiogars.tutorials.pdf
+      output_path: fr.tiogars.mkdocs-docker-image-test.pdf
       #enabled_if_env: ENABLE_PDF_EXPORT
       #
       #debug_html: true

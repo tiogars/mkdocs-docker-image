@@ -22,4 +22,7 @@ RUN pip install mkdocs-mermaid2-plugin
 
 RUN pip install mkdocs-kroki-plugin
 
+COPY ./pdf_event_hook /server/pdf_event_hook
+RUN chmod +x /server/pdf_event_hook
+
 ENTRYPOINT ["mkdocs"]
