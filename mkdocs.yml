@@ -1,0 +1,131 @@
+site_name: test-mkdocs.tiogars.fr
+site_url: https://test-mkdocs.tiogars.fr/
+repo_url: https://github.com/tiogars/mkdocs-docker-image
+site_description: tutorials on all my interested topics
+site_author: Tiogars
+nav:
+  - Home: index.md
+theme:
+  # name: readthedocs
+  name: material
+  locale: en
+  highlightjs: true
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+plugins:
+  - search:
+  # - include-markdown:
+  #     include_markdown:
+  #       root: docs
+  #       follow_symlinks: true
+  - kroki:
+      FencePrefix: ''
+      FileTypeOverrides:
+        mermaid: png
+  - macros:
+  - mermaid2:
+      javascript: https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs 
+  # - pdf-with-js:
+  #     enable: true
+  - with-pdf:
+      author: Tiogars
+      copyright: ©2025
+      #
+      #cover: false
+      #back_cover: true
+      #cover_title: TITLE TEXT
+      cover_subtitle: Documentation
+      #custom_template_path: TEMPLATES PATH
+      #
+      #toc_title: TOC TITLE TEXT
+      #heading_shift: false
+      #toc_level: 3
+      #ordered_chapter_level: 2
+      #excludes_children:
+      #    - 'release-notes/:upgrading'
+      #    - 'release-notes/:changelog'
+      #
+      #exclude_pages:
+      #    - 'bugs/'
+      #    - 'appendix/contribute/'
+      #convert_iframe:
+      #    - src: IFRAME SRC
+      #      img: POSTER IMAGE URL
+      #      text: ALTERNATE TEXT
+      #    - src: ...
+      #two_columns_level: 3
+      #
+      #render_js: true
+      #headless_chrome_path: headless-chromium
+      # headless_chrome_path: headless-chrome
+      #
+      output_path: fr.tiogars.tutorials.pdf
+      #enabled_if_env: ENABLE_PDF_EXPORT
+      #
+      #debug_html: true
+      #show_anchors: true
+      #verbose: true
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  # - pymdownx.emoji:
+  #     emoji_index: !!python/name:materialx.emoji.twemoji
+  #     emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  # - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+        # make exceptions to highlighting of code:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra_javascript:
+    - https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js
