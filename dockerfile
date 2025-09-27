@@ -1,4 +1,4 @@
-FROM python:3.12.1-slim
+FROM python:3.13.7-slim
 
 RUN apt update && \
     apt install -yq libpango-1.0-0 libpangoft2-1.0-0 libjpeg-dev libopenjp2-7-dev libffi-dev unzip && \
