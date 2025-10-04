@@ -1,31 +1,36 @@
+# Use a slim Python image as base
 FROM python:3.13.7-slim
 
-RUN apt update && \
-    apt install -yq libpango-1.0-0 libpangoft2-1.0-0 libjpeg-dev libopenjp2-7-dev libffi-dev unzip && \
-    apt clean
+# Install system dependencies required for mkdocs and weasyprint
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        libpango-1.0-0 \
+        libpangoft2-1.0-0 \
+        libjpeg-dev \
+        libopenjp2-7-dev \
+        libffi-dev \
+        unzip \
+        udev \
+        chromium && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get install -y udev chromium
+# Install Python dependencies required for mkdocs and its plugins
+RUN pip install \
+    weasyprint \
+    mkdocs \
+    mkdocs-material \
+    mkdocs-with-pdf \
+    mkdocs-include-markdown-plugin \
+    mkdocs-macros-plugin \
+    mkdocs-mermaid2-plugin \
+    mkdocs-kroki-plugin
 
-RUN pip install weasyprint
-
-RUN pip install mkdocs
-
-RUN pip install mkdocs-material
-
-RUN pip install mkdocs-with-pdf
-
-RUN pip install mkdocs-include-markdown-plugin
-
-RUN pip install mkdocs-macros-plugin
-
-RUN pip install mkdocs-mermaid2-plugin
-
-RUN pip install mkdocs-kroki-plugin
-
+# Copy the PDF event script into the image and make it executable
 COPY ./pdf_event_hook /server/pdf_event_hook
 RUN chmod +x /server/pdf_event_hook
 
+# Create the site output folder
 RUN mkdir /site_output
-RUN chmod +x /site_output
 
+# Set mkdocs as the container entrypoint
 ENTRYPOINT ["mkdocs"]
