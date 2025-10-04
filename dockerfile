@@ -25,4 +25,7 @@ RUN pip install mkdocs-kroki-plugin
 COPY ./pdf_event_hook /server/pdf_event_hook
 RUN chmod +x /server/pdf_event_hook
 
+RUN mkdir /site_output
+RUN chmod +x /site_output
+
 ENTRYPOINT ["mkdocs"]

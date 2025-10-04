@@ -3,6 +3,8 @@ site_url: https://test-mkdocs.tiogars.fr/
 repo_url: https://github.com/tiogars/mkdocs-docker-image
 site_description: Documentation for mkdocs-docker-image (test)
 site_author: Tiogars
+copyright: © 2025, Tiogars
+site_dir: site_output
 nav:
   - Home: index.md
 theme:
@@ -126,6 +128,3 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-
-extra_javascript:
-    - https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js
