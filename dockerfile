@@ -1,5 +1,5 @@
 # Use a slim Python image as base
-FROM python:3.13.7-slim
+FROM python:3.14.0-slim
 
 # Install system dependencies required for mkdocs and weasyprint
 RUN apt-get update && \
