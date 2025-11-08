@@ -10,6 +10,7 @@ nav:
 theme:
   # name: readthedocs
   name: material
+  language: en
   locale: en
   highlightjs: true
   palette:
@@ -33,6 +34,16 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
 plugins:
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: fr
+          name: Français
+          build: true
   - search:
   # - include-markdown:
   #     include_markdown:
@@ -128,3 +139,11 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+extra:
+  alternate:
+    - name: French
+      link: /fr/ 
+      lang: fr
+    - name: English
+      link: /
+      lang: en
