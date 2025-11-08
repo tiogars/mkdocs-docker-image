@@ -23,7 +23,8 @@ RUN pip install \
     mkdocs-include-markdown-plugin \
     mkdocs-macros-plugin \
     mkdocs-mermaid2-plugin \
-    mkdocs-kroki-plugin
+    mkdocs-kroki-plugin \
+    mkdocs-static-i18n
 
 # Copy the PDF event script into the image and make it executable
 COPY ./pdf_event_hook /server/pdf_event_hook

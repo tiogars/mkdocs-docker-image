@@ -42,6 +42,26 @@ def inject_link(html: str, href: str,
     return html
 
 
+def inject_language_buttons(html: str, page: Page, logger: logging) -> str:
+    """Adding language toggle buttons on navigation bar"""
+    soup = BeautifulSoup(html, 'html.parser')
+
+    # Load the languages from mkdocs.yml
+    languages = page.config['extra']['alternate']
+    current_lang = page.config['theme']['language']
+    buttons = []
+
+    for lang in languages:
+        if lang['lang'] == current_lang:
+            continue  # Skip the current language
+        buttons.append(f'<a href="{lang['link']}" class="language-button">{lang['name']}</a>')
+
+    # Create a div to hold the buttons
+    buttons_html = '<div class="language-toggle">' + ' '.join(buttons) + '</div>'
+    # Inject the buttons into the HTML
+    return html.replace('</nav>', f'{buttons_html}</nav>')  # Assuming buttons go before closing nav tag
+
+
 # def pre_js_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
 #     logger.info('(hook on pre_js_render)')
 #     return soup
