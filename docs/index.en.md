@@ -20,7 +20,7 @@ gantt
     another task     :24d
 ```
 
-```nwdiag
+```kroki-nwdiag
 nwdiag {
   network dmz {
     address = "210.x.x.x/24"

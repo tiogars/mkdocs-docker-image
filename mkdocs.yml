@@ -51,9 +51,17 @@ plugins:
   #       follow_symlinks: true
   - kroki:
       ServerURL: 'https://kroki.tiogars.fr'
-      FencePrefix: ''
+      FencePrefix: 'kroki-'
+      EnableBlockDiag: true
+      EnableBpmn: false
+      EnableExcalidraw: false
+      EnableMermaid: false
+      FailFast: false
+      HttpMethod: GET
+      FileTypes:
+        - svg
       FileTypeOverrides:
-        mermaid: png
+        nwdiag: svg
   - macros:
   - mermaid2:
       version: 10.0.2
@@ -98,6 +106,7 @@ plugins:
       #debug_html: true
       #show_anchors: true
       #verbose: true
+      pdf_event_hook: pdf_event_hook
 markdown_extensions:
   - admonition
   - abbr
