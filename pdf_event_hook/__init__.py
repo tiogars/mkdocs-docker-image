@@ -1,3 +1,6 @@
+# pdf_event_hook/__init__.py
+# https://pypi.org/project/mkdocs-with-pdf/
+
 import logging
 
 from bs4 import BeautifulSoup
@@ -29,21 +32,39 @@ def inject_link(html: str, href: str,
     logger.info(f'(hook on inject_link: {page.title}, href: {href})')
     soup = BeautifulSoup(html, 'html.parser')
 
+# md-header__inner md-grid
+
     nav = soup.find(class_='md-header-nav')
     if not nav:
         # after 7.x
-        nav = soup.find('nav', class_='md-header__inner')
+        nav = soup.find('nav', class_='md-header__inner md-grid')
     
     if nav:
         logger.info(f'Found nav element: {nav.name}, classes: {nav.get("class")}')
+
+        logger.info('Creating PDF link element')
         a = soup.new_tag('a', href=href, title='PDF',
                          **{'class': 'md-header__button md-icon'})
         icon = _pdf_icon()
-        logger.info(f'PDF icon element: {icon}')
+        #logger.info(f'PDF icon element: {icon}')
         a.append(icon)
+
         nav.append(a)
+        #logger.info(f'Result element: {nav}')
+
         logger.info('PDF link injected successfully')
-        return str(soup)
+        # Build final HTML string and also update page.content so MkDocs/with-pdf
+        # can pick up the modified version if it relies on the Page object.
+        try:
+            modified_html = str(soup)
+            # Some versions of MkDocs Page store main body in page.content;
+            # updating it increases chance the injected link is preserved.
+            page.content = modified_html  # type: ignore[attr-defined]
+            logger.debug('page.content updated with modified HTML')
+        except Exception as e:  # pragma: no cover - defensive
+            logger.warning(f'Could not update page.content: {e}')
+
+        return modified_html
     else:
         logger.warning('Nav element not found in HTML')
 

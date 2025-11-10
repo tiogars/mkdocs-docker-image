@@ -20,6 +20,7 @@ RUN pip install \
     mkdocs \
     mkdocs-material \
     mkdocs-with-pdf \
+    mkdocs-to-pdf \
     mkdocs-include-markdown-plugin \
     mkdocs-macros-plugin \
     mkdocs-mermaid2-plugin \

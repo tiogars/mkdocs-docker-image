@@ -69,7 +69,7 @@ plugins:
   - macros:
 
   # https://pypi.org/project/mkdocs-with-pdf/
-  - with-pdf:
+  - to-pdf:
       author: Tiogars
       back_cover: true
       copyright: ©2025
@@ -109,11 +109,11 @@ markdown_extensions:
   - pymdownx.smartsymbols
   - pymdownx.snippets
   - pymdownx.superfences:
-        # make exceptions to highlighting of code:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:mermaid2.fence_mermaid_custom
+      #   # make exceptions to highlighting of code:
+      # custom_fences:
+      #   - name: mermaid
+      #     class: mermaid
+      #     format: !!python/name:mermaid2.fence_mermaid_custom
   - pymdownx.tabbed
   - pymdownx.tasklist:
       custom_checkbox: true
