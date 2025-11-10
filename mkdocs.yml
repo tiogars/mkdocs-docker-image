@@ -10,6 +10,7 @@ nav:
   - Home: index.md
 theme:
   # name: readthedocs
+  favicon: assets/images/favicon.png
   name: material
   language: en
   locale: en
@@ -46,10 +47,9 @@ plugins:
           name: Français
           build: true
   - search:
-  # - include-markdown:
-  #     include_markdown:
-  #       root: docs
-  #       follow_symlinks: true
+  # https://pypi.org/project/mkdocs-include-markdown-plugin/
+  - include-markdown:
+
   # https://pypi.org/project/mkdocs-kroki-plugin/
   - kroki:
       ServerURL: 'https://kroki.tiogars.fr'
@@ -67,11 +67,7 @@ plugins:
         nwdiag: svg
         mermaid: png
   - macros:
-  # - mermaid2:
-  #     version: 10.0.2
-      # javascript: https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs 
-  # - pdf-with-js:
-  #     enable: true
+
   # https://pypi.org/project/mkdocs-with-pdf/
   - with-pdf:
       author: Tiogars
@@ -83,7 +79,6 @@ plugins:
       cover_title: mkdocs-docker-image
       debug_html: true
       output_path: fr.tiogars.mkdocs-docker-image-test.pdf
-      pdf_event_hook: pdf_event_hook
 markdown_extensions:
   - admonition
   - abbr

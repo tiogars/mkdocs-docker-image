@@ -1,18 +1,22 @@
-# Test
+# mkdocs-docker-image
 
-This is a test.
+## Objective
 
-## PDF Export
+This repository aims to provide a Docker image for MkDocs with useful pre-installed plugins, making it easier to create and manage technical documentation.
 
-[PDF](./fr.tiogars.mkdocs-docker-image-test.pdf)
+## Diagram Management
 
-## Kroki Diagrams
+Diagram management is handled via the [MkDocs Kroki Plugin](https://pypi.org/project/mkdocs-kroki-plugin/), which uses the Kroki server hosted at [https://kroki.tiogars.fr](https://kroki.tiogars.fr).
 
-```kroki-mermaid
+### Mermaid
+
+```mermaid
 graph TD
-    A[Start] --> B[Process]
-    B --> C[End]
+    A[Début] --> B[Processus]
+    B --> C[Fin]
 ```
+
+### Gantt with Mermaid
 
 ```kroki-mermaid
 gantt
@@ -25,6 +29,8 @@ gantt
     Task in sec      :2014-01-12, 12d
     another task     :24d
 ```
+
+### Network Diagrams with nwdiag
 
 ```kroki-nwdiag
 nwdiag {
