@@ -6,7 +6,7 @@ from mkdocs.structure.pages import Page
 
 def inject_link(html: str, href: str,
                 page: Page, logger: logging) -> str:
-    """Adding PDF View button on navigation bar(using material theme)"""
+    """Adding PDF View button on navigation bar (using material theme)"""
 
     def _pdf_icon():
         _ICON = '''
@@ -26,7 +26,7 @@ def inject_link(html: str, href: str,
         icon_soup = BeautifulSoup(_ICON, 'html.parser')
         return icon_soup.svg
 
-    logger.info(f'(hook on inject_link: {page.title})')
+    logger.info(f'(hook on inject_link: {page.title}, href: {href})')
     soup = BeautifulSoup(html, 'html.parser')
 
     nav = soup.find(class_='md-header-nav')
@@ -37,11 +37,12 @@ def inject_link(html: str, href: str,
     if nav:
         logger.info(f'Found nav element: {nav.name}, classes: {nav.get("class")}')
         a = soup.new_tag('a', href=href, title='PDF',
-                         **{'class': 'md-header__button md-header-nav__button md-icon'})
+                         **{'class': 'md-header__button md-icon'})
         icon = _pdf_icon()
         logger.info(f'PDF icon element: {icon}')
         a.append(icon)
         nav.append(a)
+        logger.info('PDF link injected successfully')
         return str(soup)
     else:
         logger.warning('Nav element not found in HTML')

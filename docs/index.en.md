@@ -1,6 +1,12 @@
 # Test
 
-This is a test
+This is a test.
+
+## PDF Export
+
+[PDF](./fr.tiogars.mkdocs-docker-image-test.pdf)
+
+## Kroki Diagrams
 
 ```kroki-mermaid
 graph TD

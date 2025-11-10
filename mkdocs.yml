@@ -1,5 +1,6 @@
 site_name: test-mkdocs.tiogars.fr
 site_url: https://test-mkdocs.tiogars.fr/
+repo_name: mkdocs-docker-image
 repo_url: https://github.com/tiogars/mkdocs-docker-image
 site_description: Documentation for mkdocs-docker-image (test)
 site_author: Tiogars
@@ -49,12 +50,13 @@ plugins:
   #     include_markdown:
   #       root: docs
   #       follow_symlinks: true
+  # https://pypi.org/project/mkdocs-kroki-plugin/
   - kroki:
       ServerURL: 'https://kroki.tiogars.fr'
       FencePrefix: 'kroki-'
       EnableBlockDiag: true
       EnableBpmn: false
-      EnableExcalidraw: false
+      EnableExcalidraw: true
       EnableMermaid: true
       FailFast: false
       HttpMethod: POST
@@ -70,10 +72,16 @@ plugins:
       # javascript: https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs 
   # - pdf-with-js:
   #     enable: true
+  # https://pypi.org/project/mkdocs-with-pdf/
   - with-pdf:
       author: Tiogars
+      back_cover: true
       copyright: ©2025
+      cover: true
+      cover_logo: assets/images/favicon.png
       cover_subtitle: Documentation
+      cover_title: mkdocs-docker-image
+      debug_html: true
       output_path: fr.tiogars.mkdocs-docker-image-test.pdf
       pdf_event_hook: pdf_event_hook
 markdown_extensions:

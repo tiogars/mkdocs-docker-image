@@ -8,5 +8,7 @@ services:
     working_dir: /server/
     command: ["serve","--dev-addr=0.0.0.0:8000","--clean"]
     ##command: ["build"]
+    environment:
+      - ENABLE_PDF_EXPORT=1
     ports:
       - "8000:8000"

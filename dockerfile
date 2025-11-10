@@ -24,6 +24,7 @@ RUN pip install \
     mkdocs-macros-plugin \
     mkdocs-mermaid2-plugin \
     mkdocs-kroki-plugin \
+    qrcode \
     mkdocs-static-i18n
 
 # Copy the PDF event script into the image and make it executable
