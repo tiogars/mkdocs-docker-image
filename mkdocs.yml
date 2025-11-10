@@ -50,12 +50,14 @@ plugins:
   #       root: docs
   #       follow_symlinks: true
   - kroki:
+      ServerURL: 'https://kroki.tiogars.fr'
       FencePrefix: ''
       FileTypeOverrides:
         mermaid: png
   - macros:
   - mermaid2:
-      javascript: https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs 
+      version: 10.0.2
+      # javascript: https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs 
   # - pdf-with-js:
   #     enable: true
   - with-pdf:
@@ -139,6 +141,10 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+# https://mkdocs-mermaid2.readthedocs.io/en/latest/troubleshooting/
+# Upgrade Mkdocs and Mkdocs-Macros to the latest version and stop using extra_javascript.
+# extra_javascript:
+#     - https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js
 extra:
   alternate:
     - name: French

@@ -1,13 +1,22 @@
+# pdf_event_hook
+# https://github.com/orzih/mkdocs-with-pdf?tab=readme-ov-file#sample-pdf_event_hookpy-or-pdf_event_hook__init__py
+
+# Importing logging module
 import logging
 
+# Importing BeautifulSoup for HTML parsing
 from bs4 import BeautifulSoup
+
+# Importing Page class from mkdocs.structure.pages
 from mkdocs.structure.pages import Page
 
 
+# Function to inject a PDF link into the HTML
 def inject_link(html: str, href: str,
                 page: Page, logger: logging) -> str:
     """Adding PDF View button on navigation bar(using material theme)"""
 
+    # Defining a nested function to create the PDF icon SVG
     def _pdf_icon():
         _ICON = '''
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -26,40 +35,32 @@ def inject_link(html: str, href: str,
         return BeautifulSoup(_ICON, 'html.parser')
 
     logger.info('(hook on inject_link: %s)', page.title)
+
+    # Parsing the HTML content
     soup = BeautifulSoup(html, 'html.parser')
 
+    # Finding the navigation bar
     nav = soup.find(class_='md-header-nav')
     if not nav:
         # after 7.x
+        logger.info('Navigation bar not found, trying md-header__inner.')
         nav = soup.find('nav', class_='md-header__inner')
     if nav:
+        logger.info('Navigation bar found, injecting PDF link.')
+
+        # Creating a new anchor tag for the PDF link
         a = soup.new_tag('a', href=href, title='PDF',
-                         **{'class': 'md-header-nav__button md-icon'})
+                         **{'class': 'md-header__button md-header-nav__button md-icon'})
         a.append(_pdf_icon())
+
+        # Appending the anchor tag to the navigation bar
         nav.append(a)
-        return str(soup)
+
+        str(soup)
+
+    logger.info('PDF link injection completed.')
 
     return html
-
-
-def inject_language_buttons(html: str, page: Page, logger: logging) -> str:
-    """Adding language toggle buttons on navigation bar"""
-    soup = BeautifulSoup(html, 'html.parser')
-
-    # Load the languages from mkdocs.yml
-    languages = page.config['extra']['alternate']
-    current_lang = page.config['theme']['language']
-    buttons = []
-
-    for lang in languages:
-        if lang['lang'] == current_lang:
-            continue  # Skip the current language
-        buttons.append(f'<a href="{lang['link']}" class="language-button">{lang['name']}</a>')
-
-    # Create a div to hold the buttons
-    buttons_html = '<div class="language-toggle">' + ' '.join(buttons) + '</div>'
-    # Inject the buttons into the HTML
-    return html.replace('</nav>', f'{buttons_html}</nav>')  # Assuming buttons go before closing nav tag
 
 
 # def pre_js_render(soup: BeautifulSoup, logger: logging) -> BeautifulSoup:
