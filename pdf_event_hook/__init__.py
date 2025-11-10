@@ -23,7 +23,8 @@ def inject_link(html: str, href: str,
 <path d="m400 432h-304v16h304c8.8 0 16-7.2 16-16v-16c0 8.8-7.2 16-16 16z" fill="#CAD1D8"/>
 </svg>
 '''  # noqa: E501
-        return BeautifulSoup(_ICON, 'html.parser')
+        icon_soup = BeautifulSoup(_ICON, 'html.parser')
+        return icon_soup.svg
 
     logger.info(f'(hook on inject_link: {page.title})')
     soup = BeautifulSoup(html, 'html.parser')
@@ -32,12 +33,18 @@ def inject_link(html: str, href: str,
     if not nav:
         # after 7.x
         nav = soup.find('nav', class_='md-header__inner')
+    
     if nav:
+        logger.info(f'Found nav element: {nav.name}, classes: {nav.get("class")}')
         a = soup.new_tag('a', href=href, title='PDF',
                          **{'class': 'md-header__button md-header-nav__button md-icon'})
-        a.append(_pdf_icon())
+        icon = _pdf_icon()
+        logger.info(f'PDF icon element: {icon}')
+        a.append(icon)
         nav.append(a)
         return str(soup)
+    else:
+        logger.warning('Nav element not found in HTML')
 
     return html
 

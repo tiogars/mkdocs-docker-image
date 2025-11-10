@@ -4,6 +4,7 @@ services:
     volumes:
       - ./docs:/server/docs
       - ./mkdocs.yml:/server/mkdocs.yml
+      - ./hooks.py:/server/hooks.py
     working_dir: /server/
     command: ["serve","--dev-addr=0.0.0.0:8000","--clean"]
     ##command: ["build"]

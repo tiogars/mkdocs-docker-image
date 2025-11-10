@@ -55,57 +55,26 @@ plugins:
       EnableBlockDiag: true
       EnableBpmn: false
       EnableExcalidraw: false
-      EnableMermaid: false
+      EnableMermaid: true
       FailFast: false
-      HttpMethod: GET
+      HttpMethod: POST
       FileTypes:
+        - png
         - svg
       FileTypeOverrides:
         nwdiag: svg
+        mermaid: png
   - macros:
-  - mermaid2:
-      version: 10.0.2
+  # - mermaid2:
+  #     version: 10.0.2
       # javascript: https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs 
   # - pdf-with-js:
   #     enable: true
   - with-pdf:
       author: Tiogars
       copyright: ©2025
-      #
-      #cover: false
-      #back_cover: true
-      #cover_title: TITLE TEXT
       cover_subtitle: Documentation
-      #custom_template_path: TEMPLATES PATH
-      #
-      #toc_title: TOC TITLE TEXT
-      #heading_shift: false
-      #toc_level: 3
-      #ordered_chapter_level: 2
-      #excludes_children:
-      #    - 'release-notes/:upgrading'
-      #    - 'release-notes/:changelog'
-      #
-      #exclude_pages:
-      #    - 'bugs/'
-      #    - 'appendix/contribute/'
-      #convert_iframe:
-      #    - src: IFRAME SRC
-      #      img: POSTER IMAGE URL
-      #      text: ALTERNATE TEXT
-      #    - src: ...
-      #two_columns_level: 3
-      #
-      #render_js: true
-      #headless_chrome_path: headless-chromium
-      # headless_chrome_path: headless-chrome
-      #
       output_path: fr.tiogars.mkdocs-docker-image-test.pdf
-      #enabled_if_env: ENABLE_PDF_EXPORT
-      #
-      #debug_html: true
-      #show_anchors: true
-      #verbose: true
       pdf_event_hook: pdf_event_hook
 markdown_extensions:
   - admonition
@@ -124,14 +93,10 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.details
-  # - pymdownx.emoji:
-  #     emoji_index: !!python/name:materialx.emoji.twemoji
-  #     emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  # - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
       repo_url_shorthand: true
@@ -150,10 +115,6 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-# https://mkdocs-mermaid2.readthedocs.io/en/latest/troubleshooting/
-# Upgrade Mkdocs and Mkdocs-Macros to the latest version and stop using extra_javascript.
-# extra_javascript:
-#     - https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js
 extra:
   alternate:
     - name: French

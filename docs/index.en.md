@@ -2,13 +2,13 @@
 
 This is a test
 
-```mermaid
+```kroki-mermaid
 graph TD
     A[Start] --> B[Process]
     B --> C[End]
 ```
 
-```mermaid
+```kroki-mermaid
 gantt
     title A Gantt Diagram
     dateFormat  YYYY-MM-DD
