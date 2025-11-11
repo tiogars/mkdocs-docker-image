@@ -1,5 +1,5 @@
 # pdf_event_hook/__init__.py
-# https://pypi.org/project/mkdocs-with-pdf/
+# https://mkdocs-to-pdf.readthedocs.io/en/latest/
 
 import logging
 
@@ -10,6 +10,9 @@ from mkdocs.structure.pages import Page
 def inject_link(html: str, href: str,
                 page: Page, logger: logging) -> str:
     """Adding PDF View button on navigation bar (using material theme)"""
+
+    logger.info('################################################################################')
+    logger.info('Injecting PDF link into page navigation bar')
 
     def _pdf_icon():
         _ICON = '''
@@ -30,6 +33,11 @@ def inject_link(html: str, href: str,
         return icon_soup.svg
 
     logger.info(f'(hook on inject_link: {page.title}, href: {href})')
+
+    # Determine if the current page url is starting with the French version
+    logger.info(f'Page URL: {page.url}')
+    if 'fr/' in page.url:
+        href = 'fr/' + href
     soup = BeautifulSoup(html, 'html.parser')
 
 # md-header__inner md-grid
@@ -63,6 +71,8 @@ def inject_link(html: str, href: str,
             logger.debug('page.content updated with modified HTML')
         except Exception as e:  # pragma: no cover - defensive
             logger.warning(f'Could not update page.content: {e}')
+        finally:
+            logger.info('################################################################################')
 
         return modified_html
     else:
