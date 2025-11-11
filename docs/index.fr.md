@@ -11,11 +11,7 @@ Ce dépôt a pour but de fournir une image Docker pour générer un site web à 
 
 - [Catalogue des plugins MkDocs](https://github.com/mkdocs/catalog)
 
-## Liens
-
-- [Catalogue des plugins MkDocs](https://github.com/mkdocs/catalog)
-
 ## Problèmes connus
 
-- Le pdf généré pour chaque langue écrase le pdf prcédent.
+- Le pdf généré pour chaque langue écrase le pdf précédent.
 - Le plugin "mkdocs-static-i18n" n'est pas encore totalement compatible avec "mkdocs-to-pdf". [Voir l'issue #329](https://github.com/ultrabug/mkdocs-static-i18n/issues/329) pour plus de détails.

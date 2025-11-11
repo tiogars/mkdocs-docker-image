@@ -13,10 +13,11 @@ RUN apt-get update && \
         unzip \
         udev \
         chromium && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies required for mkdocs and its plugins
-RUN pip install \
+RUN pip install --no-cache-dir\
     weasyprint \
     mkdocs \
     mkdocs-material \
@@ -25,6 +26,7 @@ RUN pip install \
     mkdocs-macros-plugin \
     mkdocs-mermaid2-plugin \
     mkdocs-kroki-plugin \
+    mkdocs-print-site-plugin \
     qrcode \
     mkdocs-static-i18n[material]
 
