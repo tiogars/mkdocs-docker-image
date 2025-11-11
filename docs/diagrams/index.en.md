@@ -4,7 +4,7 @@ Diagram management is handled via the [MkDocs Kroki Plugin](https://pypi.org/pro
 
 ## Mermaid
 
-```mermaid
+```kroki-mermaid
 graph TD
     A[Début] --> B[Processus]
     B --> C[Fin]
