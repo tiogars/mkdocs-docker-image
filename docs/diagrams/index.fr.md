@@ -4,7 +4,7 @@ La gestion des diagrammes est assurée via le plugin [MkDocs Kroki Plugin](https
 
 ## Mermaid
 
-```mermaid
+```kroki-mermaid
 graph TD
     A[Début] --> B[Processus]
     B --> C[Fin]
