@@ -36,8 +36,13 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
 plugins:
+  # https://ultrabug.github.io/mkdocs-static-i18n/
   - i18n:
+      # https://ultrabug.github.io/mkdocs-static-i18n/setup/choosing-the-structure/
       docs_structure: suffix
+      # https://ultrabug.github.io/mkdocs-static-i18n/setup/controlling-your-builds/
+      fallback_to_default: true
+      # https://ultrabug.github.io/mkdocs-static-i18n/setup/setting-up-languages/
       languages:
         - locale: en
           default: true
@@ -46,6 +51,8 @@ plugins:
         - locale: fr
           name: Français
           build: true
+      # https://ultrabug.github.io/mkdocs-static-i18n/setup/setting-up-material/
+      reconfigure_material: true
   - search:
   # https://pypi.org/project/mkdocs-include-markdown-plugin/
   - include-markdown:
@@ -72,7 +79,7 @@ plugins:
   - to-pdf:
       author: Tiogars
       back_cover: true
-      copyright: ©2025
+      copyright: Copyright © Tiogars 2025
       cover: true
       cover_logo: assets/images/favicon.png
       cover_subtitle: Documentation

@@ -19,14 +19,13 @@ RUN pip install \
     weasyprint \
     mkdocs \
     mkdocs-material \
-    mkdocs-with-pdf \
     mkdocs-to-pdf \
     mkdocs-include-markdown-plugin \
     mkdocs-macros-plugin \
     mkdocs-mermaid2-plugin \
     mkdocs-kroki-plugin \
     qrcode \
-    mkdocs-static-i18n
+    mkdocs-static-i18n[material]
 
 # Copy the PDF event script into the image and make it executable
 COPY ./pdf_event_hook /server/pdf_event_hook
