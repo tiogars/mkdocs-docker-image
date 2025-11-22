@@ -1,5 +1,5 @@
 site_name: test-mkdocs.tiogars.fr
-site_url: https://test-mkdocs.tiogars.fr/
+site_url: https://tiogars.github.io/mkdocs-docker-image
 repo_name: mkdocs-docker-image
 repo_url: https://github.com/tiogars/mkdocs-docker-image
 site_description: Documentation for mkdocs-docker-image (test)
