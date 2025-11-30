@@ -31,8 +31,8 @@ RUN pip install --no-cache-dir\
     mkdocs-static-i18n[material]
 
 # Copy the PDF event script into the image and make it executable
-COPY ./pdf_event_hook /server/pdf_event_hook
-RUN chmod +x /server/pdf_event_hook
+# COPY ./pdf_event_hook /server/pdf_event_hook
+# RUN chmod +x /server/pdf_event_hook
 
 # Create the site output folder
 RUN mkdir /site_output
