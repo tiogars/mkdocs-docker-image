@@ -30,9 +30,11 @@ RUN pip install --no-cache-dir\
     qrcode \
     mkdocs-static-i18n[material]
 
-# Copy the PDF event script into the image and make it executable
-# COPY ./pdf_event_hook /server/pdf_event_hook
-# RUN chmod +x /server/pdf_event_hook
+# Copy the documentation source files into the container
+COPY mkdocs.yml server/mkdocs.yml
+COPY docs server/docs
+
+WORKDIR /server
 
 # Create the site output folder
 RUN mkdir /site_output
