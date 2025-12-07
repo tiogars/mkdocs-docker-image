@@ -9,6 +9,7 @@ copyright: © 2025, Tiogars
 site_dir: site_output
 nav:
   - Home: index.md
+  - Usage: usage/index.md
   - Features: features/index.md
   - Requirements: requirements/index.md
   - Diagrams: diagrams/index.md
