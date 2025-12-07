@@ -18,3 +18,7 @@
     - [Github](https://github.com/fralau/mkdocs-kroki-plugin)
 - impression d'une page spécifique avec "mkdocs-print-site-plugin"
     - [Github](https://github.com/timvink/mkdocs-print-site-plugin)
+- présentations avec "mkdocs-slides"
+    - [Site web](https://ianderrington.github.io/mkdocs_slides/)
+    - [Github](https://github.com/ianderrington/mkdocs_slides)
+    - [Pypi](https://pypi.org/project/mkdocs-slides/)

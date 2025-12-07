@@ -28,7 +28,8 @@ RUN pip install --no-cache-dir\
     mkdocs-kroki-plugin \
     mkdocs-print-site-plugin \
     qrcode \
-    mkdocs-static-i18n[material]
+    mkdocs-static-i18n[material] \
+    mkdocs-slides
 
 # Copy the documentation source files into the container
 COPY mkdocs.yml server/mkdocs.yml

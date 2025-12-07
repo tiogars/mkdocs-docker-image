@@ -7,8 +7,8 @@ services:
     container_name: mkdocs
     hostname: mkdocs
     volumes:
-      - ./docs:/server/docs
-      - ./mkdocs.yml:/server/mkdocs.yml
+      - ./docs:/server/docs:ro
+      - ./mkdocs.yml:/server/mkdocs.yml:ro
     working_dir: /server/
     # https://www.mkdocs.org/user-guide/cli/#mkdocs-serve
     command: ["serve","--dev-addr=0.0.0.0:8000","--watch=docs","--watch=mkdocs.yml"]

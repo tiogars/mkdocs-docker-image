@@ -12,6 +12,8 @@ nav:
   - Features: features/index.md
   - Requirements: requirements/index.md
   - Diagrams: diagrams/index.md
+  - Slides: slides/index.md
+  - Faq: faq/index.md
 theme:
   # name: readthedocs
   favicon: assets/images/favicon.png
@@ -68,24 +70,30 @@ plugins:
             Diagrams: Diagrammes
       # https://ultrabug.github.io/mkdocs-static-i18n/setup/setting-up-material/
       reconfigure_material: true
+
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/?h=search#configuration
   - search:
+
+  # https://pypi.org/project/mkdocs-slides/
+  - slides:
+
   # https://pypi.org/project/mkdocs-include-markdown-plugin/
   - include-markdown:
 
   # https://pypi.org/project/mkdocs-kroki-plugin/
   - kroki:
-      ServerURL: 'https://kroki.tiogars.fr'
-      FencePrefix: 'kroki-'
-      EnableBlockDiag: true
-      EnableBpmn: false
-      EnableExcalidraw: true
-      EnableMermaid: true
-      FailFast: false
-      HttpMethod: POST
-      FileTypes:
+      server_url: 'https://kroki.tiogars.fr'
+      fence_prefix: 'kroki-'
+      enable_block_diag: true
+      enable_bpmn: false
+      enable_excalidraw: true
+      enable_mermaid: true
+      fail_fast: false
+      http_method: POST
+      file_types:
         - png
         - svg
-      FileTypeOverrides:
+      file_type_overrides:
         nwdiag: svg
         mermaid: png
   - macros:
