@@ -29,7 +29,12 @@ RUN pip install --no-cache-dir\
     mkdocs-print-site-plugin \
     qrcode \
     mkdocs-static-i18n[material] \
-    mkdocs-slides
+    mkdocs-slides \
+    mkdocs-page-pdf \
+    mkdocs-static-i18n[material]
+
+# Install playwright for browser automation
+RUN pip install --no-cache-dir playwright && playwright install chromium
 
 # Copy the documentation source files into the container
 COPY mkdocs.yml server/mkdocs.yml

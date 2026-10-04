@@ -1,6 +1,6 @@
 name: mkdocs-docker-image-live-dev
 services:
-  mkdocs:
+  docs:
     build:
       context: .
       dockerfile: dockerfile
