@@ -1,0 +1,29 @@
+<div id="generation-date">{{ now | strftime('%d/%m/%Y %H:%M:%S') }}</div>
+
+<div id="cover">
+  {% if cover_logo %}
+    <div class="logo-container">
+      <img src="{{ cover_logo | to_url }}" alt="Logo">
+    </div>
+  {% endif %}
+  
+  {% if cover_title %}
+    <h1>{{ cover_title }}</h1>
+  {% endif %}
+  
+  <!-- Les options spécifiques du plugin injectées au premier niveau -->
+  {% if cover_subtitle %}
+    <h2>{{ cover_subtitle }}</h2>
+  {% endif %}
+
+  <div class="meta">
+    {% if author %}
+      <p>Auteur : {{ author }}</p>
+    {% endif %}
+    
+    {% if copyright %}
+      <p>{{ copyright }}</p>
+    {% endif %}
+    
+  </div>
+</div>
