@@ -9,10 +9,10 @@ copyright: © 2025, Tiogars
 site_dir: site_output
 nav:
   - Home: index.md
-  - Usage: usage/index.md
+  - Usage: usage/index.en.md
   - Features: features/index.md
   - Requirements: requirements/index.md
-  - Diagrams: diagrams/index.md
+  - Diagrams: diagrams/index.en.md
   - Slides: slides/index.md
   - Faq: faq/index.md
 theme:
@@ -21,10 +21,12 @@ theme:
   icon:
     repo: fontawesome/brands/github
   name: material
-  custom_dir: docs/overrides
+  #custom_dir: docs/overrides
   features:
     - content.action.edit
     - content.action.view
+  language: en
+  locale: en
   highlightjs: true
   palette:
     # Palette toggle for automatic mode
@@ -47,83 +49,93 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
 plugins:
+  # https://ultrabug.github.io/mkdocs-static-i18n/
+  - i18n:
+      # https://ultrabug.github.io/mkdocs-static-i18n/setup/choosing-the-structure/
+      docs_structure: suffix
+      # https://ultrabug.github.io/mkdocs-static-i18n/setup/controlling-your-builds/
+      fallback_to_default: true
+      # https://ultrabug.github.io/mkdocs-static-i18n/setup/setting-up-languages/
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: fr
+          name: Français
+          build: true
+          nav_translations:
+            Home: Accueil
+            Features: Fonctionnalités
+            Requirements: Prérequis
+            Diagrams: Diagrammes
+      # https://ultrabug.github.io/mkdocs-static-i18n/setup/setting-up-material/
+      reconfigure_material: true
+
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/?h=search#configuration
   - search:
 
+  - macros:
 
   # https://pypi.org/project/mkdocs-slides/
   - slides:
 
   # https://pypi.org/project/mkdocs-include-markdown-plugin/
-  - include-markdown:
+  #- include-markdown:
 
   # https://pypi.org/project/mkdocs-kroki-plugin/
-  - kroki:
-      server_url: 'https://kroki.tiogars.fr'
-      fence_prefix: 'kroki-'
-      enable_block_diag: true
-      enable_bpmn: true
-      enable_excalidraw: true
-      enable_mermaid: true
-      fail_fast: true
-      http_method: POST
-      file_types:
-        - png
-        - svg
-      file_type_overrides:
-        nwdiag: svg
-        mermaid: png
- 
-  - macros:
+  # - kroki:
+  #     server_url: 'https://kroki.tiogars.fr'
+  #     fence_prefix: 'kroki-'
+  #     enable_block_diag: true
+  #     enable_bpmn: true
+  #     enable_excalidraw: true
+  #     enable_mermaid: true
+  #     fail_fast: true
+  #     http_method: POST
+  #     file_types:
+  #       - png
+  #       - svg
+  #     file_type_overrides:
+  #       nwdiag: svg
+  #       mermaid: png
 
-  # https://mkdocs-to-pdf.readthedocs.io/en/latest/
+  # https://pypi.org/project/mkdocs-with-pdf/
   # https://mkdocs-to-pdf.readthedocs.io/en/stable/installation/#weasyprint
   - to-pdf:
       author: Tiogars
-      copyright: Copyright © Tiogars 2026
-
-      custom_template_path: docs/templates
-
-      cover: true
-      cover_title: mkdocs-docker-image
-      cover_subtitle: Documentation
-      cover_logo: assets/images/favicon.png
       back_cover: true
-
-      toc_title: "Table of Contents"
-      toc_level: 3
-      ordered_chapter_level: 3
-      heading_shift: true
-      
+      copyright: Copyright © Tiogars 2025
+      cover: true
+      cover_logo: assets/images/favicon.png
+      cover_subtitle: Documentation
+      cover_title: mkdocs-docker-image
+      debug_html: true
       output_path: fr.tiogars.mkdocs-docker-image-test.pdf
-      #html_path: single.html
-
-      debug_html: false
-      verbose: false
-
-  # https://pypi.org/project/mkdocs-page-pdf/
-  #- page-to-pdf: # Should be last to ensure all content is rendered
 
   # https://pypi.org/project/mkdocs-print-site-plugin/
-  # - print-site:
-  #     add_to_navigation: true
-  #     print_page_title: 'Print Site'
-  #     print_page_basename: 'print_page'
-  #     add_print_site_banner: true
-  #     # Table of contents
-  #     add_table_of_contents: true
-  #     toc_title: 'Table of Contents'
-  #     toc_depth: 6
-  #     # Content-related
-  #     add_full_urls: true
-  #     enumerate_headings: true
-  #     enumerate_figures: true
-  #     add_cover_page: true
-  #     cover_page_template: ""
-  #     path_to_pdf: "fr.tiogars.mkdocs-docker-image-test.pdf"
-  #     include_css: true
-  #     enabled: true
-  #     exclude: ["slides"]
+  - print-site:
+      add_to_navigation: true
+      print_page_title: 'Print Site'
+      print_page_basename: 'print_page'
+      add_print_site_banner: true
+      # Table of contents
+      add_table_of_contents: true
+      toc_title: 'Table of Contents'
+      toc_depth: 6
+      # Content-related
+      add_full_urls: true
+      enumerate_headings: true
+      enumerate_figures: true
+      add_cover_page: true
+      cover_page_template: ""
+      path_to_pdf: "fr.tiogars.mkdocs-docker-image-test.pdf"
+      include_css: true
+      enabled: true
+      exclude: ["slides"]
+
+  # https://pypi.org/project/mkdocs-page-pdf/
+  - page-to-pdf: # Should be last to ensure all content is rendered
 
 markdown_extensions:
   - admonition
@@ -159,3 +171,11 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+extra:
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+    - name: French
+      link: /fr/ 
+      lang: fr
