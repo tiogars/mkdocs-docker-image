@@ -12,17 +12,17 @@
 </a>
 
 {% if page.url_to_pdf %}
-    {% if config.extra.alternate is iterable %}
-        {% for alt in config.extra.alternate %}
-            {% if alt.lang == lang.t('language') %}
+    <!-- {% if config.extra.alternate is iterable %} -->
+        <!-- {% for alt in config.extra.alternate %}
+            {% if alt.lang == lang.t('language') %} -->
                 <a href="{{ page.url_to_pdf }}" title="Site PDF">
                     <div class="md-source__icon md-icon">
                         {% include ".icons/material/file-pdf-box.svg" %}
                     </div>
                 </a>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
+            <!-- {% endif %}
+        {% endfor %} -->
+    <!-- {% endif %} -->
 {% endif %}
 
 {% if page.url_to_print_page %}
