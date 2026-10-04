@@ -1,6 +1,9 @@
 # Gestion des diagrammes
 
-La gestion des diagrammes est assurée via le plugin [MkDocs Kroki Plugin](https://pypi.org/project/mkdocs-kroki-plugin/), qui utilise le serveur Kroki hébergé à l'adresse [https://kroki.tiogars.fr](https://kroki.tiogars.fr).
+La gestion des diagrammes est assurée via le plugin
+[MkDocs Kroki Plugin](https://pypi.org/project/mkdocs-kroki-plugin/), qui
+utilise le serveur Kroki hébergé à l'adresse
+[https://kroki.tiogars.fr](https://kroki.tiogars.fr).
 
 ## Mermaid
 

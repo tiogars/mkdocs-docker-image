@@ -1,6 +1,8 @@
 # Diagram Management
 
-Diagram management is handled via the [MkDocs Kroki Plugin](https://pypi.org/project/mkdocs-kroki-plugin/), which uses the Kroki server hosted at [https://kroki.tiogars.fr](https://kroki.tiogars.fr).
+Diagram management is handled via the
+[MkDocs Kroki Plugin](https://pypi.org/project/mkdocs-kroki-plugin/), which uses
+the Kroki server hosted at [https://kroki.tiogars.fr](https://kroki.tiogars.fr).
 
 ## Mermaid
 

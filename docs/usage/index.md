@@ -13,14 +13,14 @@ docker run -v ./docs:/server/docs -v ./mkdocs.yml:/server/mkdocs.yml -v ./site_o
 
 ```yaml
 services:
-  mkdocs:
-    image: ghcr.io/tiogars/mkdocs-docker-image:latest
-    volumes:
-      - ./docs:/server/docs
-      - ./mkdocs.yml:/server/mkdocs.yml
-      - ./site_output:/server/site_output
-    working_dir: /server/
-    command: ["serve","--dev-addr=0.0.0.0:8000"]
-    ports:
-      - "8000:8000"
+    mkdocs:
+        image: ghcr.io/tiogars/mkdocs-docker-image:latest
+        volumes:
+            - ./docs:/server/docs
+            - ./mkdocs.yml:/server/mkdocs.yml
+            - ./site_output:/server/site_output
+        working_dir: /server/
+        command: ["serve", "--dev-addr=0.0.0.0:8000"]
+        ports:
+            - "8000:8000"
 ```
