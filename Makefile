@@ -35,7 +35,7 @@ build-docker:
 	$(COMPOSE) -f $(COMPOSE_DEV) run --rm mkdocs build
 
 build-docker-local:
-	$(COMPOSE) -f $(COMPOSE_LOCAL) run --build --rm docs build
+	$(COMPOSE) -f $(COMPOSE_LOCAL) run --build --rm -v ./site_output:/server/site_output docs build
 
 clean:
 	$(PYTHON) -c "from pathlib import Path; import shutil; p = Path('site_output'); shutil.rmtree(p) if p.exists() else None"
