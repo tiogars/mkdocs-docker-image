@@ -1,0 +1,10 @@
+services:
+  mkdocs:
+    image: ghcr.io/tiogars/mkdocs-docker-image:latest
+    volumes:
+      - ..:/server/docs:ro
+      - ../../site_output:/server/site_output
+    working_dir: /server/
+    command: ["serve","--config-file=${MKDOCS_CONFIG:-docs/mkdocs/mkdocs.yml}","--dev-addr=0.0.0.0:8000","--watch=docs/mkdocs"]
+    ports:
+      - "8000:8000"

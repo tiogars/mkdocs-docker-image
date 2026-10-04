@@ -2,16 +2,16 @@ name: mkdocs-docker-image-live-dev
 services:
   docs:
     build:
-      context: .
-      dockerfile: dockerfile
+      context: ../..
+      dockerfile: docs/docker/dockerfile
     container_name: mkdocs
     hostname: mkdocs
     volumes:
-      - ./docs:/server/docs:ro
-      - ./mkdocs.yml:/server/mkdocs.yml:ro
+      - ..:/server/docs:ro
+      - ../../site_output:/server/site_output
     working_dir: /server/
     # https://www.mkdocs.org/user-guide/cli/#mkdocs-serve
-    command: ["serve","--dev-addr=0.0.0.0:8000","--watch=docs","--watch=mkdocs.yml"]
+    command: ["serve","--config-file=${MKDOCS_CONFIG:-docs/mkdocs/mkdocs.yml}","--dev-addr=0.0.0.0:8000","--watch=docs/mkdocs"]
     ports:
       - "8000:8000"
     restart: unless-stopped

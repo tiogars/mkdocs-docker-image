@@ -27,11 +27,10 @@ jobs:
         run: |
           docker run \
             -v ${{ github.workspace }}/docs:/server/docs \
-            -v ${{ github.workspace }}/mkdocs.yml:/server/mkdocs.yml \
             -v ${{ github.workspace }}/site_output:/server/site_output \
             -w /server/ \
             ghcr.io/tiogars/mkdocs-docker-image:latest \
-            build
+            build --config-file docs/mkdocs/mkdocs.yml
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4

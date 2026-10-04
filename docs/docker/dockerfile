@@ -37,13 +37,14 @@ RUN pip install --no-cache-dir\
 RUN pip install --no-cache-dir playwright && playwright install chromium
 
 # Copy the documentation source files into the container
-COPY mkdocs.yml server/mkdocs.yml
-COPY docs server/docs
+COPY docs/src /server/docs/src
+COPY docs/mkdocs /server/docs/mkdocs
 
 WORKDIR /server
 
 # Create the site output folder
-RUN mkdir /site_output
+RUN mkdir /server/site_output
 
 # Set mkdocs as the container entrypoint
 ENTRYPOINT ["mkdocs"]
+CMD ["serve", "--config-file=docs/mkdocs/mkdocs.yml", "--dev-addr=0.0.0.0:8000"]

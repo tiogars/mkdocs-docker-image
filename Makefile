@@ -1,8 +1,10 @@
 .DEFAULT_GOAL := help
 
 COMPOSE ?= docker compose
-COMPOSE_DEV ?= docker-compose-dev.yml
-COMPOSE_LOCAL ?= docker-compose.yml
+COMPOSE_DEV ?= docs/docker/docker-compose.yml
+COMPOSE_LOCAL ?= docs/docker/docker-compose-dev.yml
+MKDOCS_CONFIG ?= docs/mkdocs/mkdocs.yml
+export MKDOCS_CONFIG
 PYTHON ?= python
 
 .PHONY: help build serve serve-docker serve-docker-local build-docker build-docker-local clean docker-up-docs docker-down-docs
@@ -20,10 +22,10 @@ help:
 	@echo "  make docker-down-docs   Stop the local Docker site"
 
 build:
-	mkdocs build
+	mkdocs build --config-file $(MKDOCS_CONFIG)
 
 serve:
-	mkdocs serve --dev-addr=127.0.0.1:8000
+	mkdocs serve --config-file $(MKDOCS_CONFIG) --dev-addr=127.0.0.1:8000
 
 serve-docker:
 	$(COMPOSE) -f $(COMPOSE_DEV) up mkdocs
@@ -32,10 +34,10 @@ serve-docker-local:
 	$(COMPOSE) -f $(COMPOSE_LOCAL) up --build docs
 
 build-docker:
-	$(COMPOSE) -f $(COMPOSE_DEV) run --rm mkdocs build
+	$(COMPOSE) -f $(COMPOSE_DEV) run --rm mkdocs build --config-file $(MKDOCS_CONFIG)
 
 build-docker-local:
-	$(COMPOSE) -f $(COMPOSE_LOCAL) run --build --rm -v ./site_output:/server/site_output docs build
+	$(COMPOSE) -f $(COMPOSE_LOCAL) run --build --rm docs build --config-file $(MKDOCS_CONFIG)
 
 clean:
 	$(PYTHON) -c "from pathlib import Path; import shutil; p = Path('site_output'); shutil.rmtree(p) if p.exists() else None"

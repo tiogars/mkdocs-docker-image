@@ -8,14 +8,21 @@ my default mkdocs docker image to render website docs locally and produce pdf fi
 
 ## Usage
 
+Run commands from the repository root. Documentation sources are in `docs/src`,
+MkDocs configuration, assets and templates in `docs/mkdocs`, and Docker
+configuration in `docs/docker`. Generated HTML and PDFs are in `site_output`.
+The MkDocs hook publishes `docs/mkdocs/assets` with the documentation and resolves
+custom PDF templates and the cover logo relative to the selected configuration
+file.
+
 ### Build site and PDF
 
 ```bash
-docker-compose run --rm mkdocs build
+make build-docker
 ```
 
 ```bash
-docker run -v ./docs:/server/docs -v ./mkdocs.yml:/server/mkdocs.yml -v ./site_output:/server/site_output -w /server/ -p 8000:8000 ghcr.io/tiogars/mkdocs-docker-image:latest build
+docker compose -f docs/docker/docker-compose.yml run --rm mkdocs build --config-file docs/mkdocs/mkdocs.yml
 ```
 
 ### Development server
@@ -23,11 +30,17 @@ docker run -v ./docs:/server/docs -v ./mkdocs.yml:/server/mkdocs.yml -v ./site_o
 #### Start server
 
 ```bash
-docker-compose up mkdocs
+make serve-docker
 ```
 
 #### Build site
 
 ```bash
-docker-compose -f docker-compose-dev.yml run --rm mkdocs build
+make build-docker-local
 ```
+
+Use `make serve-docker-local` to build and serve the local image, or `make serve`
+and `make build` when MkDocs and its plugins are installed on the host.
+For the alternate configuration, run
+`make build-docker-local MKDOCS_CONFIG=docs/mkdocs/mkdocs-i18n.yml`
+to ensure all plugins are available.

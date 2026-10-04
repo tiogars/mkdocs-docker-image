@@ -14,8 +14,8 @@ jobs:
 
       - name: Check for Dockerfile
         run: |
-          if [ ! -f dockerfile ]; then
-            echo "dockerfile not found!"
+          if [ ! -f docs/docker/dockerfile ]; then
+            echo "docs/docker/dockerfile not found!"
             exit 1
           fi
 
@@ -28,7 +28,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}:latest .
+          docker build -f docs/docker/dockerfile -t ghcr.io/${{ github.repository }}:latest .
 
       - name: Push Docker image
         run: |

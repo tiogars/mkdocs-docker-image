@@ -6,12 +6,12 @@
 version: 2
 updates:
   - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    directory: "/docs/docker" # Location of package manifests
     schedule:
       interval: "weekly"
   
   - package-ecosystem: "docker-compose"
-    directory: "/"
+    directory: "/docs/docker"
     schedule:
       interval: "weekly"
 
